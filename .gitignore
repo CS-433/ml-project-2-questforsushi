@@ -127,12 +127,17 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-#path to data
+#Ignore for ML project 2
 twitter-datasets/
 Embeddings/
 .pkl
 vocab_cut.txt
 vocab_full.txt
-
+vocab.pkl
+cooc.pkl
+build_vocab.sh
+cut_vocab.sh
+testSeb.py
+testSeb.ipynb
 
 #123
