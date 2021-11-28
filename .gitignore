@@ -127,7 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-#path to data
+#Ignore for ML project 2
 twitter-datasets/
 Embeddings/
 .pkl
