@@ -138,6 +138,6 @@ cooc.pkl
 build_vocab.sh
 cut_vocab.sh
 testSeb.py
-
+testSeb.ipynb
 
 #123
