@@ -135,6 +135,8 @@ vocab_cut.txt
 vocab_full.txt
 vocab.pkl
 cooc.pkl
+build_vocab.sh
+cut_vocab.sh
 
 
 #123
