@@ -137,6 +137,7 @@ vocab.pkl
 cooc.pkl
 build_vocab.sh
 cut_vocab.sh
+testSeb.py
 
 
 #123
