@@ -22,7 +22,7 @@ with open(POS_SET_PATH, 'rb') as pos_file:
 # ex : a = str(pos_set[0].split()[1])[2:-1]
 # number of positive tweets
 
-embeded_tweets = np.array([None for _ in range(DIM)])
+embeded_tweets = np.empty([len(pos_set),DIM])
 nb_pos_tweets = len(pos_set)
 for i in range(nb_pos_tweets):
     tweet = pos_set[i]
@@ -38,10 +38,10 @@ for i in range(nb_pos_tweets):
     if number_of_words != 0:
         tweet_encoding = tweet_encoding/number_of_words
     #TODO : FIND A WAY TO ADD THE NEW VECTOR TO EMBEDED TWEET EFFICIENTLY
-    embeded_tweets = np.vstack((embeded_tweets, tweet_encoding))
-    print(embeded_tweets)
-
-embeded_tweets = embeded_tweets[1:]
+    embeded_tweets[i,:] =  tweet_encoding
+    
+print(embeded_tweets.shape)
+np.save("Embedded_tweets/embeddings_dim"+str(DIM), embeded_tweets)
 
 
 

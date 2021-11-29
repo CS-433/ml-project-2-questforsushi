@@ -139,5 +139,6 @@ build_vocab.sh
 cut_vocab.sh
 testSeb.py
 testSeb.ipynb
+Embedded_tweets
 
 #123
