@@ -18,6 +18,9 @@ with open('vocab.pkl', 'rb') as f:
 
 with open(POS_SET_PATH, 'rb') as pos_file:
     pos_set = pos_file.read().splitlines()
+    
+with open(NEG_SET_PATH, 'rb') as neg_file:
+    neg_set = neg_file.read().splitlines()
 
 # ex : a = str(pos_set[0].split()[1])[2:-1]
 # number of positive tweets
@@ -41,7 +44,7 @@ for i in range(nb_pos_tweets):
     embeded_tweets[i,:] =  tweet_encoding
     
 print(embeded_tweets.shape)
-np.save("Embedded_tweets/embeddings_dim"+str(DIM), embeded_tweets)
+np.save("Embedded_tweets/embeddings_pos_dim"+str(DIM), embeded_tweets)
 
 
 
