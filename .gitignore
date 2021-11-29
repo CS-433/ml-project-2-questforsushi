@@ -142,3 +142,7 @@ testSeb.ipynb
 Embedded_tweets
 
 #123
+vocab_cut_full.txt
+vocab_full.pkl
+vocab_full_max.txt
+cooc_full.pkl

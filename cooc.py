@@ -13,7 +13,7 @@ if they appear k times in a same tweet, they are counted k times
 Correspondance : the word corresponding to the word1 index can be found in cut_vocab[word1]"""
 
 def main():
-    with open('vocab.pkl', 'rb') as f:
+    with open('vocab_full.pkl', 'rb') as f:
         vocab = pickle.load(f)
     vocab_size = len(vocab)
 
@@ -39,7 +39,7 @@ def main():
     cooc = coo_matrix((data, (row, col)))
     print("summing duplicates (this can take a while)")
     cooc.sum_duplicates()
-    with open('cooc.pkl', 'wb') as f:
+    with open('cooc_full.pkl', 'wb') as f:
         pickle.dump(cooc, f, pickle.HIGHEST_PROTOCOL)
 
 

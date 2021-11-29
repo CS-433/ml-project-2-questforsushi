@@ -4,8 +4,8 @@ import pickle
 # Opens stored data-----------------------------------------------------------------------------------------------------
 
 WORD_EMBEDDING_PATH = "Embeddings/embeddings_nmax100_dim20.npy"
-POS_SET_PATH = "twitter-datasets/train_pos.txt"
-NEG_SET_PATH = "twitter-datasets/train_neg.txt"
+POS_SET_PATH = "twitter-datasets/train_pos_full.txt"
+NEG_SET_PATH = "twitter-datasets/train_neg_full.txt"
 
 # contains the embedding for each word, as a dim dimensional vector
 word_embedding = np.load(WORD_EMBEDDING_PATH)
