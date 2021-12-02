@@ -5,7 +5,7 @@ import pickle
 import random
 
 
-def main():
+def glove(embedding_dim = 20, alpha = 3/4):
     print("loading cooccurrence matrix")
     with open('cooc.pkl', 'rb') as f:
         cooc = pickle.load(f)
@@ -15,12 +15,10 @@ def main():
     print("using nmax =", nmax, ", cooc.max() =", cooc.max())
 
     print("initializing embeddings")
-    embedding_dim = 20
     xs = np.random.normal(size=(cooc.shape[0], embedding_dim))
     ys = np.random.normal(size=(cooc.shape[1], embedding_dim))
 
     eta = 0.001 # gradient descent
-    alpha = 3 / 4 # weight 
 
     epochs = 10
 
@@ -36,7 +34,9 @@ def main():
             ys[jy] += eta * grad_common_part * x
 
     np.save("Embeddings/embeddings_nmax"+str(nmax)+"_dim"+str(embedding_dim), xs)
-
+    return xs
+def main():
+    glove()
 
 if __name__ == '__main__':
     main()
