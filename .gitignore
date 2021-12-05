@@ -146,3 +146,5 @@ vocab_cut_full.txt
 vocab_full.pkl
 vocab_full_max.txt
 cooc_full.pkl
+tests.pkl
+test.pkl

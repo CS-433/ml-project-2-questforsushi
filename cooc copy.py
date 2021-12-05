@@ -29,20 +29,28 @@ def cooc(k = 1):
 
     
     counter = 1
+    data, row, col = [], [], []
+    coocList = []
     for fn in ['twitter-datasets/train_pos.txt', 'twitter-datasets/train_neg.txt']:
         with open(fn) as file:
             """SPlitting data into k parts"""
             f = file.readlines()
-            splits = range(len(f))
+            splits = [range(len(f))]
             if(k != 1):
+                """generates indieces twice very stupid pls fix"""
                 splits = build_k_indices(f,k,1)            
-               
+             
                 
                     
             cooc_matrices = []
-            for part in splits:
+            for i in range(len(splits)):
+                if len(cooc_matrices) < k:  
+                    data.append([])
+                    row.append([])
+                    col.append([])
+                 
+                part = splits[i]
                 print(part)
-                data, row, col = [], [], []
                 for index in part:
                     line = f[index]
                     # -1 is used instead of none for tokens not found in vocab
@@ -52,17 +60,22 @@ def cooc(k = 1):
                         for t2 in tokens:
                             # data is just used for construction of the matrix in the future (that's why
                             # the appended value is always 1)
-                            data.append(1)
-                            row.append(t)
-                            col.append(t2)
+                            data[i].append(1)
+                            row[i].append(t)
+                            col[i].append(t2)
             
                 if counter % 10000 == 0:
                     print(counter)
                 counter += 1
-                cooc = coo_matrix((data, (row, col)))
-                print("summing duplicates (this can take a while)")
-                cooc.sum_duplicates()
-                cooc_matrices.append(cooc)
+    for i in range(k):
+        cooc = coo_matrix((data[i], (row[i], col[i])))
+        print("summing duplicates (this can take a while)")
+        cooc.sum_duplicates()
+        if len(cooc_matrices) < k:
+            cooc_matrices.append(cooc)
+        else:
+            cooc_matrices[i] 
+                
     if(k == 1):
         with open('test.pkl', 'wb') as f:
             pickle.dump(cooc, f, pickle.HIGHEST_PROTOCOL)
