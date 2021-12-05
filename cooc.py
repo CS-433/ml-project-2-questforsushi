@@ -3,16 +3,17 @@ from scipy.sparse import *
 import numpy as np
 import pickle
 
-"""
-This function creates & store a coo matrix
-The cooc matrix will contain (word1, word2) = n 
-Where n indicates how many times word1 and word 2 appear together in the whole corpus
--> (word1, word1) = n will indicate word1 appears n times in the whole corpus 
-if they appear k times in a same tweet, they are counted k times 
--> n could equal 0, if they never appear together 
-Correspondance : the word corresponding to the word1 index can be found in cut_vocab[word1]"""
 
 def main():
+    """
+    This function creates & store a coo matrix
+    The cooc matrix will contain (word1, word2) = n
+    Where n indicates how many times word1 and word 2 appear together in the whole corpus
+    -> (word1, word1) = n will indicate word1 appears n times in the whole corpus
+    if they appear k times in a same tweet, they are counted k times
+    -> n could equal 0, if they never appear together
+    Correspondance : the word corresponding to the word1 index can be found in cut_vocab[word1]"""
+
     with open('vocab_full.pkl', 'rb') as f:
         vocab = pickle.load(f)
     vocab_size = len(vocab)

@@ -1,28 +1,32 @@
 import numpy as np
 import pickle
 
-# Opens stored data-----------------------------------------------------------------------------------------------------
-def Build_tweet_vector(WORD_EMBEDDING_PATH, tweet_PATH, SAVE_PATH):
-    
 
+# Opens stored data-----------------------------------------------------------------------------------------------------
+def build_tweet_vector(WORD_EMBEDDING_PATH, VOCAB_PATH, tweet_PATH, SAVE_PATH, pos_or_neg):
+    """
+    Takes a word embedding array and returns an embedding of each tweet, as the AVERAGE vector of every word it contains
+    :param WORD_EMBEDDING_PATH: path of array containing the word embedding
+    :param tweet_PATH: path of the tweets to be embedded
+    :param SAVE_PATH: TODO : Change this, we want a single path for both
+    :return: embedding of the tweets, as average embedding of the words
+    """
     # contains the embedding for each word, as a dim dimensional vector
     word_embedding = np.load(WORD_EMBEDDING_PATH)
     DIM = word_embedding.shape[1]
     print(DIM)
 
     # vocab is a dict from textual word to its numerical position
-    with open('vocab.pkl', 'rb') as f:
+    with open(VOCAB_PATH, 'rb') as f:
         vocab = pickle.load(f)
 
     with open(tweet_PATH, 'rb') as pos_file:
         tweets = pos_file.read().splitlines()
-        
- 
 
     # ex : a = str(pos_set[0].split()[1])[2:-1]
     # number of positive tweets
 
-    embeded_tweets = np.empty([len(tweets),DIM])
+    embedded_tweets = np.empty([len(tweets), DIM])
     nb_tweets = len(tweets)
     for i in range(nb_tweets):
         tweet = tweets[i]
@@ -36,24 +40,23 @@ def Build_tweet_vector(WORD_EMBEDDING_PATH, tweet_PATH, SAVE_PATH):
                 tweet_encoding += word_embedding[word_index]
                 number_of_words += 1
         if number_of_words != 0:
-            tweet_encoding = tweet_encoding/number_of_words
-        #TODO : FIND A WAY TO ADD THE NEW VECTOR TO EMBEDED TWEET EFFICIENTLY
-        embeded_tweets[i,:] =  tweet_encoding
-  
-        
-    
-    np.save(SAVE_PATH+str(DIM), embeded_tweets)
-    return embeded_tweets
-    #np.save(NEG_SAVE_PATH+str(DIM), embedded_neg)
+            tweet_encoding = tweet_encoding / number_of_words
+        embedded_tweets[i, :] = tweet_encoding
+
+    np.save(SAVE_PATH+"/tweet_embeddings_"+pos_or_neg+"_dim_"+str(DIM), embedded_tweets)
+
 
 def main():
     WORD_EMBEDDING_PATH = "Embeddings/embeddings_nmax100_dim20.npy"
+    VOCAB_PATH = "vocab_full.pkl"
     POS_SET_PATH = "twitter-datasets/train_pos_full.txt"
-    POS_SAVE_PATH = "Embedded_tweets/embeddings_pos_dim"
     NEG_SET_PATH = "twitter-datasets/train_neg_full.txt"
-    NEG_SAVE_PATH = "Embedded_tweets/embeddings_neg_dim"
-    Build_tweet_vector(WORD_EMBEDDING_PATH, POS_SET_PATH, POS_SAVE_PATH)
-    Build_tweet_vector(WORD_EMBEDDING_PATH, NEG_SET_PATH, NEG_SAVE_PATH)
-    #TODO : Append each tweet encoding to a big array
+    SAVE_PATH = "Embedded_tweets"
+
+    build_tweet_vector(WORD_EMBEDDING_PATH, VOCAB_PATH, POS_SET_PATH, SAVE_PATH, "pos")
+    build_tweet_vector(WORD_EMBEDDING_PATH, VOCAB_PATH, NEG_SET_PATH, SAVE_PATH, "neg")
+    # TODO : Append each tweet encoding to a big array and output a single one. See if we want the 1/0 col to appear inside too
+
+
 if __name__ == '__main__':
     main()
