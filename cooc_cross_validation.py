@@ -13,7 +13,7 @@ Where n indicates how many times word1 and word 2 appear together in the whole c
 if they appear k times in a same tweet, they are counted k times 
 -> n could equal 0, if they never appear together 
 Correspondance : the word corresponding to the word1 index can be found in cut_vocab[word1]"""
-def build_k_indices(y, k_fold, seed):
+def build_k_indices(y, k_fold, seed = 1):
     """build k indices for k-fold."""
     num_row = len(y)
     interval = int(num_row / k_fold)
@@ -22,7 +22,7 @@ def build_k_indices(y, k_fold, seed):
     k_indices = [indices[k * interval: (k + 1) * interval]
                  for k in range(k_fold)]
     return np.array(k_indices)
-def cooc(k = 1):
+def cooc_CV(k = 2, seed = 1):
     with open('vocab_full.pkl', 'rb') as f:
         vocab = pickle.load(f)
     vocab_size = len(vocab)
@@ -38,16 +38,16 @@ def cooc(k = 1):
             splits = [range(len(f))]
             if(k != 1):
                 """generates indieces twice very stupid pls fix"""
-                splits = build_k_indices(f,k,1)            
+                splits = build_k_indices(f,k,seed)            
              
                 
                     
             cooc_matrices = []
             for i in range(len(splits)):
                 if len(cooc_matrices) < k:  
-                    data.append([])
-                    row.append([])
-                    col.append([])
+                    data.append([[],[]])
+                    row.append([[],[]])
+                    col.append([[],[]])
                  
                 part = splits[i]
                 print(part)
@@ -60,19 +60,29 @@ def cooc(k = 1):
                         for t2 in tokens:
                             # data is just used for construction of the matrix in the future (that's why
                             # the appended value is always 1)
-                            data[i].append(1)
-                            row[i].append(t)
-                            col[i].append(t2)
-            
+                            """generates testing cooc"""
+                            data[i][0].append(1)
+                            row[i][0].append(t)
+                            col[i][0].append(t2)
+                            """Generates training cooc"""
+                            for notK in range(k):
+                                if notK  != k:
+                                    data[i][1].append(1)
+                                    row[i][1].append(t)
+                                    col[i][1].append(t2)
+                
                 if counter % 10000 == 0:
                     print(counter)
                 counter += 1
     for i in range(k):
-        cooc = coo_matrix((data[i], (row[i], col[i])))
+        cooc = coo_matrix((data[i][0], (row[i][0], col[i][0])))
+        cooc2 = coo_matrix((data[i][1], (row[i][1], col[i][1])))
         print("summing duplicates (this can take a while)")
         cooc.sum_duplicates()
+        cooc2.sum_duplicates()
+        totCooc = [cooc2, cooc]
         if len(cooc_matrices) < k:
-            cooc_matrices.append(cooc)
+            cooc_matrices.append(totCooc)
         else:
             cooc_matrices[i] 
                 
@@ -81,11 +91,13 @@ def cooc(k = 1):
             pickle.dump(cooc, f, pickle.HIGHEST_PROTOCOL)
             return cooc
     else:
-        with open('tests.pkl', 'wb') as f:
+        name = 'Cooc_CV_seed%s_k%x'%(seed, k)
+        with open(name, 'wb') as f:
             pickle.dump(cooc_matrices, f, pickle.HIGHEST_PROTOCOL)
         return cooc_matrices
 def main():
-    cooc(2)
+
+    cooc_CV(2)
 
 if __name__ == '__main__':
     main()
