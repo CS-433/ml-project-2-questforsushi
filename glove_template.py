@@ -5,11 +5,12 @@ import pickle
 import random
 
 
-def glove(embedding_dim=20, alpha=3 / 4):
+def glove(embedding_dim=20, alpha=3 / 4,cooc = None, COOC_PATH = 'cooc.pkl',SAVE_PATH = "Embeddings/embeddings_nmax"):
     print("loading cooccurrence matrix")
-    with open('cooc_full.pkl', 'rb') as f:
-        cooc = pickle.load(f)
-    print("{} nonzero entries".format(cooc.nnz))
+    if cooc == None:
+        with open('cooc.pkl', 'rb') as f:
+            cooc = pickle.load(f)
+        print("{} nonzero entries".format(cooc.nnz))
 
     nmax = 100  # this will serve as a cut-off to do not exagerate the importance of some very popular words
     print("using nmax =", nmax, ", cooc.max() =", cooc.max())
@@ -33,8 +34,8 @@ def glove(embedding_dim=20, alpha=3 / 4):
             xs[ix] += eta * grad_common_part * y
             ys[jy] += eta * grad_common_part * x
 
-    np.save("Embeddings/embeddings_nmax" + str(nmax) + "_dim" + str(embedding_dim), xs)
-    return xs
+    np.save(SAVE_PATH + str(nmax) + "_dim" + str(embedding_dim), xs)
+    return (xs, ys)
 
 
 def main():

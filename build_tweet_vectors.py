@@ -3,7 +3,7 @@ import pickle
 
 
 # Opens stored data-----------------------------------------------------------------------------------------------------
-def build_tweet_vector(WORD_EMBEDDING_PATH, VOCAB_PATH, tweet_PATH, SAVE_PATH, pos_or_neg):
+def build_tweet_vector(WORD_EMBEDDING_PATH, VOCAB_PATH, tweet_PATH, SAVE_PATH, pos_or_neg = ""):
     """
     Takes a word embedding array and returns an embedding of each tweet, as the AVERAGE vector of every word it contains
     :param WORD_EMBEDDING_PATH: path of array containing the word embedding
@@ -44,6 +44,7 @@ def build_tweet_vector(WORD_EMBEDDING_PATH, VOCAB_PATH, tweet_PATH, SAVE_PATH, p
         embedded_tweets[i, :] = tweet_encoding
 
     np.save(SAVE_PATH+"/tweet_embeddings_"+pos_or_neg+"_dim_"+str(DIM), embedded_tweets)
+    return embedded_tweets
 
 
 def main():

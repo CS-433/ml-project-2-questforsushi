@@ -149,3 +149,5 @@ cooc_full.pkl
 tests.pkl
 test.pkl
 Cooc_CV_seed1_k2
+testCV_alpha5.0100_dim20.npy
+Cooc_CV_seed1_k2.pkl

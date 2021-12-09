@@ -22,8 +22,8 @@ def build_k_indices(y, k_fold, seed = 1):
     k_indices = [indices[k * interval: (k + 1) * interval]
                  for k in range(k_fold)]
     return np.array(k_indices)
-def cooc_CV(k = 2, seed = 1):
-    with open('vocab_full.pkl', 'rb') as f:
+def cooc_CV(k = 2, seed = 1, VOCAB_PATH = 'vocab.pkl',TWIT_POS_PATH = 'twitter-datasets/train_pos.txt', TWIT_NEG_PATH = 'twitter-datasets/train_neg.txt'):
+    with open(VOCAB_PATH, 'rb') as f:
         vocab = pickle.load(f)
     vocab_size = len(vocab)
 
@@ -31,7 +31,7 @@ def cooc_CV(k = 2, seed = 1):
     counter = 1
     data, row, col = [], [], []
     coocList = []
-    for fn in ['twitter-datasets/train_pos.txt', 'twitter-datasets/train_neg.txt']:
+    for fn in [TWIT_POS_PATH, TWIT_NEG_PATH]:
         with open(fn) as file:
             """SPlitting data into k parts"""
             f = file.readlines()
@@ -76,6 +76,7 @@ def cooc_CV(k = 2, seed = 1):
                 counter += 1
     for i in range(k):
         cooc = coo_matrix((data[i][0], (row[i][0], col[i][0])))
+        """cooc2 is the one with most of the data"""
         cooc2 = coo_matrix((data[i][1], (row[i][1], col[i][1])))
         print("summing duplicates (this can take a while)")
         cooc.sum_duplicates()
@@ -91,7 +92,7 @@ def cooc_CV(k = 2, seed = 1):
             pickle.dump(cooc, f, pickle.HIGHEST_PROTOCOL)
             return cooc
     else:
-        name = 'Cooc_CV_seed%s_k%x'%(seed, k)
+        name = 'Cooc_CV_seed%s_k%x.pkl'%(seed, k)
         with open(name, 'wb') as f:
             pickle.dump(cooc_matrices, f, pickle.HIGHEST_PROTOCOL)
         return cooc_matrices

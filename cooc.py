@@ -14,7 +14,7 @@ def main():
     -> n could equal 0, if they never appear together
     Correspondance : the word corresponding to the word1 index can be found in cut_vocab[word1]"""
 
-    with open('vocab_full.pkl', 'rb') as f:
+    with open('vocab.pkl', 'rb') as f:
         vocab = pickle.load(f)
     vocab_size = len(vocab)
 
