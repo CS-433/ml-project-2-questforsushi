@@ -5,7 +5,7 @@ import pickle
 import random
 
 
-def glove(embedding_dim=20, alpha=3 / 4,cooc = None, COOC_PATH = 'cooc.pkl',SAVE_PATH = "Embeddings/embeddings_nmax"):
+def glove(embedding_dim=20, alpha=3 / 4,cooc = None, COOC_PATH = 'cooc.pkl',SAVE_PATH = "Embeddings/embeddings"):
     print("loading cooccurrence matrix")
     if cooc == None:
         with open('cooc.pkl', 'rb') as f:

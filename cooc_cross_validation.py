@@ -30,7 +30,7 @@ def cooc_CV(k = 2, seed = 1, VOCAB_PATH = 'vocab.pkl',TWIT_POS_PATH = 'twitter-d
     
     counter = 1
     data, row, col = [], [], []
-    coocList = []
+   
     for fn in [TWIT_POS_PATH, TWIT_NEG_PATH]:
         with open(fn) as file:
             """SPlitting data into k parts"""
@@ -42,9 +42,9 @@ def cooc_CV(k = 2, seed = 1, VOCAB_PATH = 'vocab.pkl',TWIT_POS_PATH = 'twitter-d
              
                 
                     
-            cooc_matrices = []
+            
             for i in range(len(splits)):
-                if len(cooc_matrices) < k:  
+                if len(data) < k:  
                     data.append([[],[]])
                     row.append([[],[]])
                     col.append([[],[]])
@@ -74,18 +74,17 @@ def cooc_CV(k = 2, seed = 1, VOCAB_PATH = 'vocab.pkl',TWIT_POS_PATH = 'twitter-d
                 if counter % 10000 == 0:
                     print(counter)
                 counter += 1
+    cooc_matrices = []
     for i in range(k):
         cooc = coo_matrix((data[i][0], (row[i][0], col[i][0])))
-        """cooc2 is the one with most of the data"""
+        """cooc2 is the one with most of the data i.e training data"""
         cooc2 = coo_matrix((data[i][1], (row[i][1], col[i][1])))
         print("summing duplicates (this can take a while)")
         cooc.sum_duplicates()
         cooc2.sum_duplicates()
         totCooc = [cooc2, cooc]
-        if len(cooc_matrices) < k:
-            cooc_matrices.append(totCooc)
-        else:
-            cooc_matrices[i] 
+        cooc_matrices.append(totCooc)
+        
                 
     if(k == 1):
         with open('test.pkl', 'wb') as f:

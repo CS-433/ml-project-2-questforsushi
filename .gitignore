@@ -140,7 +140,7 @@ cut_vocab.sh
 testSeb.py
 testSeb.ipynb
 Embedded_tweets
-
+imported_embeddings/
 #123
 vocab_cut_full.txt
 vocab_full.pkl
@@ -151,3 +151,5 @@ test.pkl
 Cooc_CV_seed1_k2
 testCV_alpha5.0100_dim20.npy
 Cooc_CV_seed1_k2.pkl
+3123e7f5c3f6a30095d413b12fc3284bbf717acd2a9bed63d1c7c13bf5223352.zip
+TFID.pkl
