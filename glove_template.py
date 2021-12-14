@@ -5,23 +5,29 @@ import pickle
 import random
 
 
-def glove(embedding_dim=20, alpha=3 / 4,cooc = None, COOC_PATH = 'cooc.pkl',SAVE_PATH = "Embeddings/embeddings"):
+def glove(embedding_dim=20, alpha=3 / 4,cooc = None, COOC_PATH = 'cooc.pkl',SAVE_PATH = "Embeddings/embeddings",with_intial = False, INITIAL_PATH = "imported_embeddings/glove.twitter.27B.25d.npy"):
     print("loading cooccurrence matrix")
     if cooc == None:
-        with open('cooc.pkl', 'rb') as f:
+        with open(COOC_PATH, 'rb') as f:
             cooc = pickle.load(f)
         print("{} nonzero entries".format(cooc.nnz))
-
+    
     nmax = 100  # this will serve as a cut-off to do not exagerate the importance of some very popular words
     print("using nmax =", nmax, ", cooc.max() =", cooc.max())
-
+     
     print("initializing embeddings")
-    xs = np.random.normal(size=(cooc.shape[0], embedding_dim))
-    ys = np.random.normal(size=(cooc.shape[1], embedding_dim))
+    xs = []
+    ys = []
+    if with_intial:
+        xs = np.load(INITIAL_PATH)
+        ys = np.copy(xs)
+    else:
+        xs = np.random.normal(size=(cooc.shape[0], embedding_dim))
+        ys = np.random.normal(size=(cooc.shape[1], embedding_dim))
 
     eta = 0.001  # gradient descent
 
-    epochs = 10
+    epochs =5
 
     for epoch in range(epochs):
         print("epoch {}".format(epoch))
