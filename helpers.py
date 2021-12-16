@@ -45,5 +45,26 @@ def import_embedding(vocab, PATH_EMBEDDING):
                                 embArray = np.array(lineArray[1:])
                                
                                 embedding[wordI,:] = embArray
-    np.save(PATH_EMBEDDING, embedding)
+    np.save("imported_embeddings/glove.twitter.27B.200d.npy", embedding)
     return embedding
+import csv
+"""dont send in shuffled test data will fuck everything"""
+def create_prediction(y_pred, name):
+    with open(name, 'w') as csvfile:
+        fieldnames = ['Id', 'Prediction']
+        writer = csv.DictWriter(csvfile, delimiter=",", fieldnames=fieldnames)
+        writer.writeheader()
+        for id,y in enumerate(y_pred):
+            writer.writerow({'Id':int(id+1),'Prediction':int(y)})
+def create_noID_data():
+    with open("twitter-datasets/test_data.txt", 'rb') as f:
+        text = f.readlines()
+        cleaned_text = []
+        for i,line in enumerate(text):
+            line = str(line)
+            temp = line.split(",",1)
+            #temp[1] += '\n'
+            cleaned_text.append( bytes(temp[1][0:-3] + '\n',"utf-8"))
+    print(text[0])       
+    with open("twitter-datasets/test_data_noId.txt", 'wb') as f:
+        f.writelines(cleaned_text)

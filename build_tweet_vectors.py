@@ -25,7 +25,7 @@ def build_tweet_vector(WORD_EMBEDDING_PATH, VOCAB_PATH, tweet_PATH, SAVE_PATH,  
 
     with open(tweet_PATH, 'rb') as pos_file:
         tweets = pos_file.read().splitlines()
-    with open('TFID.pkl', 'rb') as f:
+    with open('TFID_stopW.pkl', 'rb') as f:
         TFID = pickle.load(f)
 
     # ex : a = str(pos_set[0].split()[1])[2:-1]
