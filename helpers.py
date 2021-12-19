@@ -64,7 +64,6 @@ def create_noID_data():
             line = str(line)
             temp = line.split(",",1)
             #temp[1] += '\n'
-            cleaned_text.append( bytes(temp[1][0:-3] + '\n',"utf-8"))
-    print(text[0])       
+            cleaned_text.append( bytes(temp[1][0:-3] + '\n',"utf-8"))    
     with open("twitter-datasets/test_data_noId.txt", 'wb') as f:
         f.writelines(cleaned_text)
