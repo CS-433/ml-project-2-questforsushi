@@ -51,7 +51,7 @@ project
 ```
 
 ## 4. Embeddings & general ML methods 
-An example of how the embedding and ML was trained is in the ml_methods_embeddings.ipynb notbook with clear instructions how to proceed. In the helpers functions there is also the functionality to train your own GloVe embedding as well as import pre-trained models. You can create your own vocabulary and co-occurance matrix as well by moving the files in the build_vocab to root and running them replacing the original vocab.pkl and cooc.pkl files with those instead.
+An example of how the embedding and ML was trained is in the ml_methods_embeddings.ipynb notbook with clear instructions how to proceed. In the helpers functions there is also the functionality to train your own GloVe embedding as well as import pre-trained models. You can create your own vocabulary and co-occurance matrix as well by moving the files in the build_vocab to root and running them in turn creating new vocab.pkl and cooc.pkl files.
 
 ## 5. BERT
 
