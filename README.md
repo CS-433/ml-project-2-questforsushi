@@ -17,31 +17,36 @@ As a first step you will need to additionally download (part of) the large data 
 Once step 2 performed, you should achieve the following git structure:  
 ```
 project
-│   README.md
-│   bert.ipynb
-│   cooc.pkl""used for glove training""
-|   helpers.py ""functions primarily used in ml_methods_embeddings.ipynb""
-|   ml_methods_embeddings.ipynb
-|   vocab.pkl""vocabulary that will be used in ml_methods_embeddings.ipynb""
+│   README.md -this file 
+│   bert.ipynb -pipeline (jupyter notebook) of all bert-related work 
+│   cooc.pkl -used for glove training
+|   helpers.py -functions primarily used in ml_methods_embeddings.ipynb
+|   vocab.pkl -vocabulary that will be used in ml_methods_embeddings.ipynb
+|   ml_methods_embeddings.ipynb -used for embeddings
+|   run.py -generates the final AICrowd output 
+|
 └───build_vocab
 |   |build_vocab.sh
 |   |cooc.py
 |   |cut_vocab.sh
 |   |pickle_vocab.py
 │   
-└───imported_embeddings""used in the ml_methods_embeddings.ipynb notbook""
-|   |""4 embedding files""
+└───imported_embeddings -used in the ml_methods_embeddings.ipynb notbook""
+|   |#4 embedding files
 |
-└───neural_nets""used in the ml_methods_embeddings.ipynb notbook""
+└───neural_nets -used in the ml_methods_embeddings.ipynb notbook
 |   |layers2_nodes128_3cnn_filters100_size4_3_2.pth
 |
-└─── twitter-datasets
-|    |train_pos.txt
-|    |train_neg.txt
-|    |train_pos_full.txt
-|    |train_neg_full.txt
-|    |test_data.txt
-
+└───Tweet_Large_Files
+|   └──twitter-datasets -initial dataset 
+|       |train_pos.txt
+|       |train_neg.txt
+|       |train_pos_full.txt
+|       |train_neg_full.txt
+|       |test_data.txt
+|   └──checkpoint-10000-epoch-1 -final BERT model
+|       |#various model files 
+ 
 ```
 
 ## 4. EMBEDDING AND ML 
