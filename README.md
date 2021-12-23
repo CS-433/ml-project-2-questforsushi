@@ -26,6 +26,7 @@ project
 |   vocab.pkl -vocabulary that will be used in ml_methods_embeddings.ipynb
 |   ml_methods_embeddings.ipynb -used for embeddings
 |   run.py -generates the final AICrowd output 
+|   TFID_stopW.pkl "TF-IDF vectorizer with stopwords enbabled"
 |
 └───build_vocab
 |   |build_vocab.sh
