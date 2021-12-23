@@ -38,7 +38,13 @@ project
 |
 └───neural_nets""used in the ml_methods_embeddings.ipynb notbook""
 |   |layers2_nodes128_3cnn_filters100_size4_3_2.pth
-  
+|
+└─── twitter-datasets
+|    |train_pos.txt
+|    |train_neg.txt
+|    |train_pos_full.txt
+|    |train_neg_full.txt
+|    |test_data.txt
 
 ```
 
