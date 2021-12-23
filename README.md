@@ -23,14 +23,11 @@ project
 |   helpers.py ""functions primarily used in ml_methods_embeddings.ipynb""
 |   ml_methods_embeddings.ipynb
 |   vocab.pkl""vocabulary that will be used in ml_methods_embeddings.ipynb""
-└───folder
-│   │   file011.txt
-│   │   file012.txt
-│   │
-│   └───subfolder1
-│       │   file111.txt
-│       │   file112.txt
-│       │   ...
+└───build_vocab
+|   |build_vocab.sh
+|   |cooc.py
+|   |cut_vocab.sh
+|   |pickle_vocab.py
 │   
 └───imported_embeddings""used in the ml_methods_embeddings.ipynb notbook""
 |   |""4 embedding files""
