@@ -21,7 +21,7 @@ project
 │   README.md
 │   bert.ipynb
 │   cooc.pkl""used for glove training""
-|   helpers.py
+|   helpers.py ""functions primarily used in ml_methods_embeddings.ipynb""
 |   ml_methods_embeddings.ipynb
 |   vocab.pkl""vocabulary that will be used in ml_methods_embeddings.ipynb""
 └───folder
