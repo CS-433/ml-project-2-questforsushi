@@ -14,8 +14,7 @@ Let us explain a bit how the following files are structured.
 As a first step you will need to additionally download (part of) the large data files we are using. These cannot be uploaded to github, so we provide all of them in the following [drive](https://drive.google.com/drive/folders/1XtMsccaqu5as0yxiJCjPQdlqS3ap5kph). Simply download the whole drive at the root of your local github clone. (less than 1GB) 
 
 ## 3. Git structure. 
-Once step 2 performed, you should achieve the following git structure: 
-SEBASTIAN : Describe structure here. 
+Once step 2 performed, you should achieve the following git structure:  
 ```
 project
 │   README.md
