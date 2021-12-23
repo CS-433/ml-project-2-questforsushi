@@ -38,7 +38,6 @@ project
 |
 └───neural_nets
 |   |layers2_nodes128_3cnn_filters100_size4_3_2.pth
-W
   
 
 ```
