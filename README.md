@@ -13,6 +13,7 @@ The following lines will guide you through the structure of our project.
 ## 2. Large data download
 As a first step you will need to additionally download (part of) the large data files we are using. These cannot be uploaded to github, so we provide all of them in the following [drive](https://drive.google.com/drive/folders/1XtMsccaqu5as0yxiJCjPQdlqS3ap5kph). Simply download the whole drive at the root of your local github clone. (less than 1GB) 
 If the folder comes in zip format, please unzip it. 
+Make sure the folder you download is correctly names "Tweet_Large_Files" and has not been renamed in the download or unzipping proceidure. 
 
 
 ## 3. Additional packages 
