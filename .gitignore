@@ -139,7 +139,7 @@ cooc.pkl
 testSeb.py
 testSeb.ipynb
 imported_embeddings/
-neural_nets/
+
 submissions/
 #123
 vocab_cut_full.txt
