@@ -133,8 +133,6 @@ Embeddings/
 .pkl
 vocab_cut.txt
 vocab_full.txt
-vocab.pkl
-cooc.pkl
 
 testSeb.py
 testSeb.ipynb
