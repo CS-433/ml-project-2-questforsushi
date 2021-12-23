@@ -2,8 +2,8 @@
 ml-project-2-questforsushi created by GitHub Classroom
 
 ## Authors 
-Sebastian Alveteg
-Stefan Rotarus
+Sebastian Alveteg\
+Stefan Rotarus\
 Christos Fragkos
 
 ## 1. Intro 
