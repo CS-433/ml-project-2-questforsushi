@@ -19,9 +19,12 @@ SEBASTIAN : Describe structure here.
 ```
 project
 │   README.md
-│   file001.txt    
-│
-└───folder1
+│   bert.ipynb
+│   cooc.pkl
+|   helpers.py
+|   ml_methods_embeddings.ipynb
+|   vocab.pkl
+└───folder
 │   │   file011.txt
 │   │   file012.txt
 │   │
@@ -30,9 +33,14 @@ project
 │       │   file112.txt
 │       │   ...
 │   
-└───folder2
-    │   file021.txt
-    │   file022.txt
+└───imported_embeddings
+|   |""4 embedding files""
+|
+└───neural_nets
+|   |layers2_nodes128_3cnn_filters100_size4_3_2.pth
+W
+  
+
 ```
 
 ## 4. EMBEDDING AND ML 
