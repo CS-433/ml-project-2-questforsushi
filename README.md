@@ -8,6 +8,7 @@ Christos Fragkos
 
 ## 1. Intro 
 Dear assistants, dear professors, first of all, good morning/afternoon/night!
+
 Let us explain a bit how the following files are structured. 
 
 ## 2. Large data download
@@ -49,8 +50,8 @@ project
  
 ```
 
-## 4. EMBEDDING AND ML 
-An example of how the embedding and ML was trained is in the ml_methods_embeddin notbook with clear instructions how to proceed. I the helpers functions there is also the functionality to train your own GloVe embedding as well as import pre-trained models. You can create your own vocabulary and co-occurance matrix as well by moving the files in the build_vocab to root and running them replacing the original vocab.pkl and cooc.pkl files with those instead.
+## 4. Embeddings & general ML methods 
+An example of how the embedding and ML was trained is in the ml_methods_embeddin notbook with clear instructions how to proceed. In the helpers functions there is also the functionality to train your own GloVe embedding as well as import pre-trained models. You can create your own vocabulary and co-occurance matrix as well by moving the files in the build_vocab to root and running them replacing the original vocab.pkl and cooc.pkl files with those instead.
 
 ## 5. BERT
 
