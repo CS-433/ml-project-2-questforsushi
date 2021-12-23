@@ -29,7 +29,7 @@ All instructions contained here are moreover reminded in the first section of th
 Simply click the small arrow on the right of the title, "ML_Project2" and add it as a short link to your personal drive, at the /MyDrive/ level. 
 It contains everything you need to run this google colab, create models, train and test them. Then you can run bert.ipynb in Google Colab as usual.
 
-## 5.run.py
+## 5. run.py
 
 The run.py is a small piece of the bert.ipynb aimed to recreate exactly our submission to AI-Crowd. 
 We provide together with it the vinai_models100k folder, containing the corresponding train model, previously dowloaded in section 2. The code is short and self-explainatory. 
