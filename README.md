@@ -20,10 +20,10 @@ SEBASTIAN : Describe structure here.
 project
 │   README.md
 │   bert.ipynb
-│   cooc.pkl
+│   cooc.pkl""used for glove training""
 |   helpers.py
 |   ml_methods_embeddings.ipynb
-|   vocab.pkl
+|   vocab.pkl""vocabulary that will be used in ml_methods_embeddings.ipynb""
 └───folder
 │   │   file011.txt
 │   │   file012.txt
@@ -33,10 +33,10 @@ project
 │       │   file112.txt
 │       │   ...
 │   
-└───imported_embeddings
+└───imported_embeddings""used in the ml_methods_embeddings.ipynb notbook""
 |   |""4 embedding files""
 |
-└───neural_nets
+└───neural_nets""used in the ml_methods_embeddings.ipynb notbook""
 |   |layers2_nodes128_3cnn_filters100_size4_3_2.pth
   
 
