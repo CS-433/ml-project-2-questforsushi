@@ -37,7 +37,7 @@ project
 |   vocab.pkl -vocabulary that will be used in ml_methods_embeddings.ipynb
 |   ml_methods_embeddings.ipynb -used for embeddings
 |   run.py -generates the final AICrowd output 
-|   TFID_stopW.pkl "TF-IDF vectorizer with stopwords enbabled"
+|   TFID_stopW.pkl -TF-IDF vectorizer with stopwords enbabled
 |
 └───build_vocab
 |   |build_vocab.sh
@@ -45,7 +45,7 @@ project
 |   |cut_vocab.sh
 |   |pickle_vocab.py
 │   
-└───imported_embeddings -used in the ml_methods_embeddings.ipynb notbook""
+└───imported_embeddings -used in the ml_methods_embeddings.ipynb notbook
 |   |#4 embedding files
 |
 └───neural_nets -used in the ml_methods_embeddings.ipynb notbook
