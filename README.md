@@ -51,14 +51,14 @@ project
 ```
 
 ## 4. Embeddings & general ML methods 
-An example of how the embedding and ML was trained is in the ml_methods_embeddin notbook with clear instructions how to proceed. In the helpers functions there is also the functionality to train your own GloVe embedding as well as import pre-trained models. You can create your own vocabulary and co-occurance matrix as well by moving the files in the build_vocab to root and running them replacing the original vocab.pkl and cooc.pkl files with those instead.
+An example of how the embedding and ML was trained is in the ml_methods_embeddings.ipynb notbook with clear instructions how to proceed. In the helpers functions there is also the functionality to train your own GloVe embedding as well as import pre-trained models. You can create your own vocabulary and co-occurance matrix as well by moving the files in the build_vocab to root and running them replacing the original vocab.pkl and cooc.pkl files with those instead.
 
 ## 5. BERT
 
 Bert was entirely trained with the help of google notebook and drive. 
 This is due to way better running time (GPU) and large files involved when we train models.  
 
-We provide a file called jupyter.ipynb that along with a google colab drive link containing all the necessary files. 
+We provide a file called bert.ipynb that along with a google colab drive link containing all the necessary files. 
 It was created in a first place to be run with google colab. 
 All paths refer to the following google [drive folder](https://drive.google.com/drive/folders/11-iqSDHChz9ihD_9gY5L3SKspiwuwyil?usp=sharing), with public access. Note this is not entirely the same drive as the one mentionned in section 2, as we did not want you to download by mistake too much data. 
 All instructions contained here are moreover reminded in the first section of the jupyter notebook. 
